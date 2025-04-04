@@ -78,6 +78,47 @@ img {
 
     .nav__link {
       color: $dark-grey;
+      cursor: pointer;
+      position: relative;
+      z-index: 5;
+      transition: all 0.5s;
+      padding: 1.2rem 1.6rem;
+
+      &:hover {
+        color: $off-white;
+      }
+
+      &:hover span {
+        transform: scaleY(1);
+      }
+
+      span {
+        width: 25%;
+        position: absolute;
+        height: 100%;
+        background-color: $primary-red;
+        z-index: -1;
+        left: 0;
+        top: 0;
+        transform: scaleY(0);
+        transition: all 0.5s;
+        transform-origin: top;
+
+        &:nth-child(2) {
+          left: 25%;
+          transition-delay: 0.15s;
+        }
+
+        &:nth-child(3) {
+          left: 50%;
+          transition-delay: 0.3s;
+        }
+
+        &:nth-child(4) {
+          left: 75%;
+          transition-delay: 0.45s;
+        }
+      }
     }
   }
 }
@@ -163,7 +204,6 @@ main {
       text-transform: uppercase;
       cursor: pointer;
       position: relative;
-      z-index: 5;
       transition: all 0.3s;
 
       &:hover {
@@ -268,6 +308,7 @@ main {
     right: -30rem;
     max-width: 30rem;
     transition: all 0.3s ease;
+    z-index: 1;
   }
 }
 
@@ -283,12 +324,6 @@ main {
   color: $dark-grey;
 }
 
-.nav__link {
-  cursor: pointer;
-  position: relative;
-  z-index: 5;
-}
-
 .ham-menu {
   height: 5rem;
   width: 5rem;
@@ -300,26 +335,26 @@ main {
   @include respond(ham-menu) {
     display: block;
   }
-}
 
-.ham-menu span {
-  height: 3px;
-  width: 100%;
-  background-color: $black;
-  border-radius: 2.5rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: all 0.3s ease;
-}
+  span {
+    height: 3px;
+    width: 100%;
+    background-color: $black;
+    border-radius: 2.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
 
-.ham-menu span:first-child {
-  top: 25%;
-}
+    &:first-child {
+      top: 25%;
+    }
 
-.ham-menu span:last-child {
-  top: 75%;
+    &:last-child {
+      top: 75%;
+    }
+  }
 }
 
 .ham-menu.active span:first-child {
@@ -352,47 +387,4 @@ body::before {
 body.active::before {
   opacity: 1;
   z-index: 3;
-}
-
-// ANIMATION
-
-.nav__link {
-  transition: all 0.5s;
-  padding: 1.2rem 1.6rem;
-
-  &:hover {
-    color: $off-white !important;
-  }
-
-  &:hover span {
-    transform: scaleY(1);
-  }
-
-  span {
-    width: 25%;
-    position: absolute;
-    height: 100%;
-    background-color: $primary-red;
-    z-index: -1;
-    left: 0;
-    top: 0;
-    transform: scaleY(0);
-    transition: all 0.5s;
-    transform-origin: top;
-
-    &:nth-child(2) {
-      left: 25%;
-      transition-delay: 0.15s;
-    }
-
-    &:nth-child(3) {
-      left: 50%;
-      transition-delay: 0.3s;
-    }
-
-    &:nth-child(4) {
-      left: 75%;
-      transition-delay: 0.45s;
-    }
-  }
 }
